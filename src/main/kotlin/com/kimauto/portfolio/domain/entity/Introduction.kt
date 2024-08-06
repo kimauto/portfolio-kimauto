@@ -1,20 +1,21 @@
 package com.kimauto.portfolio.domain.entity
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 
 @Entity
-class Introduction : BaseEntity() {
+class Introduction(
+    content: String,
+    isActive: Boolean
+) : BaseEntity() {
 
     @Id //필드가 pk다
     @GeneratedValue(strategy = GenerationType.IDENTITY) // identity my sql 이 알아서 pk를 만들어줌
     @Column(name = "introduction_id")
     var id: Long? = null
 
+    var content: String = content
 
+    var isActive: Boolean = isActive
 
 
 }
