@@ -8,16 +8,15 @@ class Project(
     description: String,
     startYear: Int,
     startMonth: Int,
-    endYear: Int?, // 비어있으면 현재 개발중
+    endYear: Int?,
     endMonth: Int?,
     isActive: Boolean
 ) : BaseEntity() {
 
-    @Id //필드가 pk다
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // identity my sql 이 알아서 pk를 만들어줌
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_id")
     var id: Long? = null
-
 
     var name: String = name
 
@@ -27,17 +26,13 @@ class Project(
 
     var startMonth: Int = startMonth
 
-    var endYear: Int? = null
+    var endYear: Int? = endYear
 
-    var endMonth: Int? = null
+    var endMonth: Int? = endMonth
 
     var isActive: Boolean = isActive
 
-
-    @OneToMany(
-        targetEntity = ProjectDetail::class, fetch = FetchType.LAZY,
-        cascade = [CascadeType.ALL]
-    ) // experienceDetail 1:N 관계, MutableList는 변할수 있는
+    @OneToMany(targetEntity = ProjectDetail::class, fetch = FetchType.LAZY, cascade = [CascadeType.PERSIST])
     @JoinColumn(name = "project_id")
     var details: MutableList<ProjectDetail> = mutableListOf()
 
@@ -52,10 +47,7 @@ class Project(
         return "${endYear}.${endMonth}"
     }
 
-    fun update(
-        name: String, description: String, startYear: Int, startMonth: Int,
-        endYear: Int?, endMonth: Int?, isActive: Boolean
-    ) {
+    fun update(name: String, description: String, startYear: Int, startMonth: Int, endYear: Int?, endMonth: Int?, isActive: Boolean) {
         this.name = name
         this.description = description
         this.startYear = startYear
@@ -65,11 +57,9 @@ class Project(
         this.isActive = isActive
     }
 
-    fun addDetails(detail: MutableList<ProjectDetail>?) {
-        if (detail != null) {
+    fun addDetails(details: MutableList<ProjectDetail>?) {
+        if (details != null) {
             this.details.addAll(details)
         }
     }
-
-
 }

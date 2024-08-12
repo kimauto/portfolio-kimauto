@@ -5,8 +5,8 @@ import jakarta.persistence.*
 @Entity
 class ProjectSkill(project: Project, skill: Skill) : BaseEntity() {
 
-    @Id //필드가 pk다
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // identity my sql 이 알아서 pk를 만들어줌
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_skill_id")
     var id: Long? = null
 
@@ -17,6 +17,5 @@ class ProjectSkill(project: Project, skill: Skill) : BaseEntity() {
     @ManyToOne(targetEntity = Skill::class, fetch = FetchType.LAZY)
     @JoinColumn(name = "skill_id", nullable = false)
     var skill: Skill = skill
-
 
 }

@@ -3,14 +3,10 @@ package com.kimauto.portfolio.domain.entity
 import jakarta.persistence.*
 
 @Entity
-class ProjectDetail(
-    content: String,
-    url: String?,
-    isActive: Boolean
-) : BaseEntity() {
+class ProjectDetail(content: String, url: String?, isActive: Boolean) : BaseEntity() {
 
-    @Id //필드가 pk다
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // identity my sql 이 알아서 pk를 만들어줌
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_detail_id")
     var id: Long? = null
 
@@ -25,6 +21,5 @@ class ProjectDetail(
         this.url = url
         this.isActive = isActive
     }
-
-
 }
+

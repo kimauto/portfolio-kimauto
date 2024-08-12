@@ -11,7 +11,6 @@ class Experience(
     endYear: Int?, // 비어있으면 현재 개발중
     endMonth: Int?,
     isActive: Boolean
-
 ) : BaseEntity() {
 
     @Id //필드가 pk다
@@ -27,16 +26,13 @@ class Experience(
 
     var startMonth: Int = startMonth
 
-    var endYear: Int? = null
+    var endYear: Int? = endYear
 
-    var endMonth: Int? = null
+    var endMonth: Int? = endMonth
 
     var isActive: Boolean = isActive
 
-    @OneToMany(
-        targetEntity = ExperienceDetail::class, fetch = FetchType.LAZY,
-        cascade = [CascadeType.ALL]
-    ) // experienceDetail 1:N 관계, MutableList는 변할수 있는
+    @OneToMany(targetEntity = ExperienceDetail::class, fetch = FetchType.LAZY, cascade = [CascadeType.ALL]) // experienceDetail 1:N 관계, MutableList는 변할수 있는
     @JoinColumn(name = "experience_id")
     var details: MutableList<ExperienceDetail> = mutableListOf()
 
@@ -62,8 +58,8 @@ class Experience(
         this.isActive = isActive
     }
 
-    fun addDetails(detail: MutableList<ExperienceDetail>?) {
-        if (detail != null) {
+    fun addDetails(details: MutableList<ExperienceDetail>?) {
+        if (details != null) {
             this.details.addAll(details)
         }
     }
