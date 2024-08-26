@@ -18,9 +18,9 @@ class AdminLinkViewController(
     @GetMapping
     fun link(model: Model): String {
         val formElements = listOf<FormElementDTO>(
-            TextFormElementDTO("name",2),
-            TextFormElementDTO("content",8),
-            SelectFormElementDTO("isActive",2, listOf(true.toString(), false.toString()))
+            TextFormElementDTO("name", 2),
+            TextFormElementDTO("content", 8),
+            SelectFormElementDTO("isActive", 2, listOf(true.toString(), false.toString()))
         )
         model.addAttribute("formElements", formElements)
 
@@ -31,9 +31,9 @@ class AdminLinkViewController(
         val pageAttribute = mutableMapOf<String, Any>(
             Pair("menuName", "Index"),
             Pair("pageName", table.name),
-            Pair("editable", "true"),
-            Pair("deletable", "false"),
-            Pair("hasDetails", "false")
+            Pair("editable", true),
+            Pair("deletable", false),
+            Pair("hasDetails", false)
         )
         model.addAllAttributes(pageAttribute)
 

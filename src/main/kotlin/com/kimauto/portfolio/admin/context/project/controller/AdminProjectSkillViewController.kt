@@ -1,44 +1,47 @@
-package com.yongback.portfolio.admin.context.skill.controller
+package com.kimauto.portfolio.admin.context.project.controller
 
-import com.kimauto.portfolio.admin.context.skill.service.AdminSkillService
+import com.kimauto.portfolio.admin.context.project.service.AdminProjectSkillService
 import com.kimauto.portfolio.admin.data.FormElementDTO
 import com.kimauto.portfolio.admin.data.SelectFormElementDTO
-import com.kimauto.portfolio.admin.data.TextFormElementDTO
-import com.kimauto.portfolio.domain.constant.SkillType
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 
+
 @Controller
-@RequestMapping("/admin/skill")
-class AdminSkillViewController(
-    private val adminSkillService: AdminSkillService
+@RequestMapping("/admin/project/skill")
+class AdminProjectSkillViewController(
+    private val adminProjectSkillService: AdminProjectSkillService
 ) {
 
     @GetMapping
-    fun skill(model: Model): String {
+    fun projectSkill(model: Model): String {
+
+        val projectList = adminProjectSkillService.getProjectList()
+        val skillList = adminProjectSkillService.getSkillList()
 
         val formElements = listOf<FormElementDTO>(
-            TextFormElementDTO("name", 2),
-            SelectFormElementDTO("type", 2, SkillType.values().map { it.name }.toList()),
-            SelectFormElementDTO("isActive", 2, listOf(true.toString(), false.toString()))
+            SelectFormElementDTO("project", 8, projectList),
+            SelectFormElementDTO("skill", 4, skillList),
         )
         model.addAttribute("formElements", formElements)
 
-        val table = adminSkillService.getSkillTable()
+        val table = adminProjectSkillService.getProjectSkillTable()
         model.addAttribute("table", table)
         model.addAttribute("detailTable", null)
 
         val pageAttributes = mutableMapOf<String, Any>(
-            Pair("menuName", "Resume"),
+            Pair("menuName", "Projects"),
             Pair("pageName", table.name),
-            Pair("editable", true),
-            Pair("deletable", false),
+            Pair("editable", false),
+            Pair("deletable", true),
             Pair("hasDetails", false),
         )
         model.addAllAttributes(pageAttributes)
 
         return "admin/page-table"
     }
+
+
 }
