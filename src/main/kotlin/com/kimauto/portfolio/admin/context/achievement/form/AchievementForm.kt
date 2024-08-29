@@ -8,10 +8,18 @@ data class AchievementForm(
 
     @field:NotBlank(message = "필수값입니다.")
     val title: String,
+
+    @field:NotBlank(message = "필수값입니다.")
     val description: String,
+
+    @field:NotBlank(message = "필수값입니다.")
     val host: String,
+
+    @field:NotBlank(message = "필수값입니다.")
     val achievedDate: String,
-    val isAchieve: Boolean,
+
+    val isActive: Boolean
+
 ) {
     fun toEntity(): Achievement {
         return Achievement(
@@ -19,7 +27,7 @@ data class AchievementForm(
             description = this.description,
             host = this.host,
             achievedDate = LocalDate.parse(this.achievedDate),
-            isActive = this.isAchieve
+            isActive = this.isActive
         )
     }
 

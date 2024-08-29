@@ -2,6 +2,7 @@ package com.kimauto.portfolio.admin.context.skill.service
 
 import com.kimauto.portfolio.admin.context.skill.forn.SkillForm
 import com.kimauto.portfolio.domain.entity.Introduction
+import com.kimauto.portfolio.domain.entity.Skill
 import com.kimauto.portfolio.domain.repository.SkillRepository
 import com.yongback.portfolio.admin.data.TableDTO
 import org.springframework.stereotype.Service
@@ -12,7 +13,7 @@ class AdminSkillService(
     private val skillRepository: SkillRepository,
 ) {
     fun getSkillTable(): TableDTO {
-        val classInfo = Introduction::class
+        val classInfo = Skill::class
         val entities = skillRepository.findAll()
 
         return TableDTO.from(classInfo, entities)

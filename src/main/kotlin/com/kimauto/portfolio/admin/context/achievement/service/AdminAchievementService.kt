@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 class AdminAchievementService(
     private val achievementRepository: AchievementRepository
 ) {
+
     fun getAchievementTable(): TableDTO {
         val classInfo = Achievement::class
         val entities = achievementRepository.findAll()
@@ -29,5 +30,4 @@ class AdminAchievementService(
         val achievement = form.toEntity(id)
         achievementRepository.save(achievement)
     }
-
 }

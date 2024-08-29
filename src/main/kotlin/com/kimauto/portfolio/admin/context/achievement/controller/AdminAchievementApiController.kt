@@ -24,6 +24,6 @@ class AdminAchievementApiController(
     fun putAchievement(@PathVariable id: Long, @RequestBody form: AchievementForm): ResponseEntity<Any> {
         adminAchievementService.update(id, form)
 
-        return ApiResponse.successCreate()
+        return ApiResponse.successUpdate()
     }
 }

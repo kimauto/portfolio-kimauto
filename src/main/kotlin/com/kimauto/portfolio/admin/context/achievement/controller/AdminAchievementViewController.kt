@@ -18,27 +18,28 @@ class AdminAchievementViewController(
 
     @GetMapping
     fun achievement(model: Model): String {
+
         val formElements = listOf<FormElementDTO>(
             TextFormElementDTO("title", 4),
-            TextFormElementDTO("description", 4),
-            DateFormElementDTO("achievedDate", 4),
-            TextFormElementDTO("host", 4),
+            TextFormElementDTO("description", 8),
+            DateFormElementDTO("achievedDate", 5),
+            TextFormElementDTO("host", 5),
             SelectFormElementDTO("isActive", 2, listOf(true.toString(), false.toString()))
         )
         model.addAttribute("formElements", formElements)
 
         val table = adminAchievementService.getAchievementTable()
         model.addAttribute("table", table)
-        model.addAttribute("detailTable", null) // null 이면 아무것도 안보여줌
+        model.addAttribute("detailTable", null)
 
-        val pageAttribute = mutableMapOf<String, Any>(
+        val pageAttributes = mutableMapOf<String, Any>(
             Pair("menuName", "Resume"),
             Pair("pageName", table.name),
             Pair("editable", true),
             Pair("deletable", false),
-            Pair("hasDetails", false)
+            Pair("hasDetails", false),
         )
-        model.addAllAttributes(pageAttribute)
+        model.addAllAttributes(pageAttributes)
 
         return "admin/page-table"
     }

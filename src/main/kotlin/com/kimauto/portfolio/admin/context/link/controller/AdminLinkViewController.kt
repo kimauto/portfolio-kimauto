@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping
 @Controller
 @RequestMapping("/admin/link")
 class AdminLinkViewController(
-    private val linkService: AdminLinkService
+    private val adminLinkService: AdminLinkService
 ) {
 
     @GetMapping
     fun link(model: Model): String {
+
         val formElements = listOf<FormElementDTO>(
             TextFormElementDTO("name", 2),
             TextFormElementDTO("content", 8),
@@ -24,18 +25,18 @@ class AdminLinkViewController(
         )
         model.addAttribute("formElements", formElements)
 
-        val table = linkService.getLinkTable()
+        val table = adminLinkService.getLinkTable()
         model.addAttribute("table", table)
-        model.addAttribute("detailTable", null) // null 이면 아무것도 안보여줌
+        model.addAttribute("detailTable", null)
 
-        val pageAttribute = mutableMapOf<String, Any>(
+        val pageAttributes = mutableMapOf<String, Any>(
             Pair("menuName", "Index"),
             Pair("pageName", table.name),
             Pair("editable", true),
             Pair("deletable", false),
-            Pair("hasDetails", false)
+            Pair("hasDetails", false),
         )
-        model.addAllAttributes(pageAttribute)
+        model.addAllAttributes(pageAttributes)
 
         return "admin/page-table"
     }
