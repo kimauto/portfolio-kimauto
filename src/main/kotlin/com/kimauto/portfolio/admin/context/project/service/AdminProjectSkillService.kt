@@ -89,6 +89,6 @@ class AdminProjectSkillService(
 
     @Transactional
     fun delete(id: Long) {
-        projectRepository.deleteById(id)
+        projectSkillRepository.deleteById(id)
     }
 }
