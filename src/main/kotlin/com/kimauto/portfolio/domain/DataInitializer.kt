@@ -64,7 +64,7 @@ class DataInitializer(
 
         // experience / experience_detail 초기화
         val experience1 = Experience(
-            title = "캣홀릭대학교(CatHolic Univ.)",
+            title = "대진대학교",
             description = "컴퓨터공학 전공",
             startYear = 2018,
             startMonth = 9,

@@ -1,11 +1,11 @@
 package com.kimauto.portfolio.admin.context.project.service
 
 import com.kimauto.portfolio.admin.context.project.form.ProjectForm
+import com.kimauto.portfolio.admin.data.TableDTO
 import com.kimauto.portfolio.admin.exception.AdminBadRequestException
 import com.kimauto.portfolio.domain.entity.Project
 import com.kimauto.portfolio.domain.entity.ProjectDetail
 import com.kimauto.portfolio.domain.repository.ProjectRepository
-import com.yongback.portfolio.admin.data.TableDTO
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -17,7 +17,7 @@ class AdminProjectService(
         val classInfo = Project::class
         val entities = projectRepository.findAll()
 
-        return TableDTO.from(classInfo, entities, "details")
+        return TableDTO.from(classInfo, entities, "details", "skills")
     }
 
     fun getProjectDetailTable(id: Long?): TableDTO {
@@ -28,6 +28,7 @@ class AdminProjectService(
 
         return TableDTO.from(classInfo, entities)
     }
+
     @Transactional
     fun save(form: ProjectForm) {
 

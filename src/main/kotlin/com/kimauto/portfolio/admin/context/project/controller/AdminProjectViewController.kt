@@ -1,4 +1,4 @@
-package com.yongback.portfolio.admin.context.project.controller
+package com.kimauto.portfolio.admin.context.project.controller
 
 import com.kimauto.portfolio.admin.context.project.service.AdminProjectService
 import com.kimauto.portfolio.admin.data.FormElementDTO

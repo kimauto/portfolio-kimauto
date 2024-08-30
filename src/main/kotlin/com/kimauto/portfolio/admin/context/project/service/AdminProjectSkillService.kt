@@ -1,6 +1,5 @@
 package com.kimauto.portfolio.admin.context.project.service
 
-import com.kimauto.portfolio.admin.context.project.form.ProjectForm
 import com.kimauto.portfolio.admin.context.project.form.ProjectSkillForm
 import com.kimauto.portfolio.admin.exception.AdminBadRequestException
 import com.kimauto.portfolio.admin.exception.AdminInternalSeverErrorException
@@ -8,7 +7,7 @@ import com.kimauto.portfolio.domain.entity.ProjectSkill
 import com.kimauto.portfolio.domain.repository.ProjectRepository
 import com.kimauto.portfolio.domain.repository.ProjectSkillRepository
 import com.kimauto.portfolio.domain.repository.SkillRepository
-import com.yongback.portfolio.admin.data.TableDTO
+import com.kimauto.portfolio.admin.data.TableDTO
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

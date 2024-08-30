@@ -1,4 +1,4 @@
-package com.yongback.portfolio.admin.context.skill.controller
+package com.kimauto.portfolio.admin.context.skill.controller
 
 import com.kimauto.portfolio.admin.context.skill.service.AdminSkillService
 import com.kimauto.portfolio.admin.data.FormElementDTO

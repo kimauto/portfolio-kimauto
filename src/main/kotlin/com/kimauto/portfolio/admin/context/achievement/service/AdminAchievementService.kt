@@ -3,7 +3,7 @@ package com.kimauto.portfolio.admin.context.achievement.service
 import com.kimauto.portfolio.admin.context.achievement.form.AchievementForm
 import com.kimauto.portfolio.domain.entity.Achievement
 import com.kimauto.portfolio.domain.repository.AchievementRepository
-import com.yongback.portfolio.admin.data.TableDTO
+import com.kimauto.portfolio.admin.data.TableDTO
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

@@ -1,10 +1,9 @@
 package com.kimauto.portfolio.admin.context.skill.service
 
 import com.kimauto.portfolio.admin.context.skill.forn.SkillForm
-import com.kimauto.portfolio.domain.entity.Introduction
 import com.kimauto.portfolio.domain.entity.Skill
 import com.kimauto.portfolio.domain.repository.SkillRepository
-import com.yongback.portfolio.admin.data.TableDTO
+import com.kimauto.portfolio.admin.data.TableDTO
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

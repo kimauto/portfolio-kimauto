@@ -3,7 +3,7 @@ package com.kimauto.portfolio.admin.context.project.controller
 import com.kimauto.portfolio.admin.context.project.form.ProjectForm
 import com.kimauto.portfolio.admin.context.project.service.AdminProjectService
 import com.kimauto.portfolio.admin.data.ApiResponse
-import com.yongback.portfolio.admin.data.TableDTO
+import com.kimauto.portfolio.admin.data.TableDTO
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
