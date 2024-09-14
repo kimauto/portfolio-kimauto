@@ -18,7 +18,8 @@ class DataInitializer(
     private val linkRepository: LinkRepository,
     private val skillRepository: SkillRepository,
     private val projectRepository: ProjectRepository,
-    private val experienceRepository: ExperienceRepository
+    private val experienceRepository: ExperienceRepository,
+    private val accountRepository: AccountRepository
 ) {
     @PostConstruct
     fun initializeData() {
@@ -151,8 +152,13 @@ class DataInitializer(
                 ProjectSkill(project = project2, skill = kafka)
             )
         )
+        projectRepository.saveAll(mutableListOf(project1, project2))
 
-       projectRepository.saveAll(mutableListOf(project1, project2))
+        val account = Account(
+            loginId = "admin1",
+            pw = "\$2a\$10\$.VBfl091HVhwxRLFpwtktu4GYXiTPOMoDJcj/2oyciHZzZoYLGyVa"
+        )
+        accountRepository.save(account)
     }
 
 }
